@@ -343,6 +343,12 @@ interface RSLocalDeque {
 /** 全局队列管理器,线程安全*/
 declare var RSLocalDeque: RSLocalDeque;
 
+/** 根据下标生成一个全局队列,相同的下标生成的队列是同一个,即使在不同的V8实例之间,线程安全
+ * @param index 下标
+*/
+declare function RSGlobalDeque(index:number): RSDeque
+
+
 interface DLLInstance {
 
 }
@@ -358,6 +364,63 @@ interface RSDLL {
 }
 /** DLL管理类,线程安全*/
 declare var RSDLL: RSDLL;
+
+/** 睡眠,单位毫秒
+ * @param sleep 要睡眠的时间
+*/
+declare function RSSleep(sleep: number): void;
+
+/** MD5*/
+declare function md5(data: string): string;
+
+/** sha256*/
+declare function sha256(data: string): string;
+
+
+
+interface RSVM {
+    /**
+    * 执行一个JS文件,当path指定的文件名在全局存储器里存在相应的key时,会直接加载对应的值
+    * @param path JS文件路径,可以为网络文件,也可以为本地文件(可以为相对路径)
+    * @param need_cache 是否需要缓存代码,如果为true,代码被缓存到全局存储器,key为path
+    * @param src_name 此参数设置document.currentScript.src的值,如果为网络文件,不用设置(网络文件自动配置)
+    */
+   import(path:string, need_cache:boolean, src_name:string): any
+
+    /**
+    * 执行JS代码
+    * @param jscode js代码
+    */
+   compile(jscode:string):any;
+}
+/** vm*/
+declare var RSVM: RSVM;
+
+
+interface RSContext {
+
+    /**
+    * 执行一个JS文件,当path指定的文件名在全局存储器里存在相应的key时,会直接加载对应的值
+    * @param path JS文件路径,可以为网络文件,也可以为本地文件(可以为相对路径)
+    */
+   import(path:string): any
+
+    /**
+    * 执行JS代码
+    * @param jscode js代码
+    */
+    eval(jscode:string):any;
+}
+
+
+
+interface RSContextConstructor {
+    /**
+    * 创建一个独立的JS环境
+    */    
+    new(): RSContext;
+}
+declare var RSContext: DateConstructor;
 
 
 
