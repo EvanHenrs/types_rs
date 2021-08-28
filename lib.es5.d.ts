@@ -382,6 +382,9 @@ declare function md5(data: string): string;
 declare function sha256(data: string): string;
 
 
+/** 异步运行函数*/
+declare function RSScriptDone(fn: Function): any;
+
 
 interface RSVM {
     /**
