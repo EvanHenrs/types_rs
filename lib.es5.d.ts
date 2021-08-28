@@ -96,3 +96,41 @@ interface RSHttp {
 }
 /** Http组件,底层使用libcurl */
 declare var RSHttp: RSHttp;
+
+
+interface RSV8Opt {
+    /** 设置网络代理,所有的网络请求都会走此代理
+     * 当为字符串的时候,形式为 "127.0.0.1:1111"
+     * 当为对象的时候,形式为 {ip:"127.0.0.1:1111", user_pwd:代理账户:密码, type:代理类型(0=HTTP,5=SOCKS5)}
+     */
+    httpProxy: string | object;
+    /** 设置当前环境userAgent
+     *  你不能直接使用navigator.userAgent设置此值
+     */
+    userAgent: string;    
+    /** 设置当前环境平台类型,
+     *  0:PC, 1:安卓,默认为0
+     */
+    platform: number; 
+    /** 设置当前根目录,一些需要用到路径的地方如果传递了相对路径,则会使用此根目录
+     */
+    rootPath: string;  
+     /** 异步阈值
+     *  当setTimeout指定的时间值比此值小,所设置异步会被自动执行
+     */
+    timeout: number;   
+    /** 赋予XMLHttpRequest请求网络的能力
+     *  如果为true,XMLHttpRequest会像浏览器一样,发送HTTP请求,
+     *  如果为false,那么XMLHttpRequest的相关数据会被保存在RSXMLData类里,
+     *  默认为false
+     */
+    autoHttp: boolean;  
+    /** 是否自动执行JSONP请求
+     *  如果为true,当脚本元素src链接被赋值且元素被加入到文档,
+     *  则会自动请求该脚本并执行,默认为false
+     */
+    autoScript: boolean;  
+}
+/** V8选项配置 */
+declare var RSV8Opt: RSV8Opt;
+
