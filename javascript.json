@@ -1,10 +1,6 @@
 
 {
-	// Place your snippets for javascript here. Each snippet is defined under a snippet name and has a prefix, body and 
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	// same ids are connected.
-	// Example:
+
 	
 	"reference path": {
 		"prefix": "//ref",
@@ -336,29 +332,7 @@
 		"prefix": "opt::platform",
 		"body":["platform:1,"],
 		"description": "平台切换"
-	 },
-	 
-	 "exception":{
-		"prefix": "opt::exception",
-		"body":[
-			"exception: (e)=>{" ,
-			"   $1",
-			"},"
-		],
-		"description": "异常",
-		
-	 },	 
-
-	 "parseHTML":{
-		"prefix": "opt::parseHTML",
-		"body":[
-			"parseHTML: true,"
-		],
-		"description": "解析HTML",
-		
-	 },	 
-
-	 
+	 },  
 	 "RSScriptDone":{
 		"prefix": "RSScriptDone",
 		"body":[
@@ -367,9 +341,7 @@
 			"});"
 		],
 		"description": "RSScriptDone"
-	 },	 
-	 
-	 
+	 },	  
 	 "RSV8Opt.httpProxy":{
 		"prefix": "RSV8Opt.httpProxy",
 		"body":["RSV8Opt.httpProxy = '$1';"],
@@ -532,5 +504,5 @@
 		"prefix": "RSHttp.setOption",
 		"body":["RSHttp.setOption($1,$2);"],
 		"description": "设置选项"
-	 },
+	 }
 }

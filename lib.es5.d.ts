@@ -130,6 +130,11 @@ interface RSV8Opt {
      *  则会自动请求该脚本并执行,默认为false
      */
     autoScript: boolean;  
+
+     /** 
+      * 解析HTML,innerHTML or ourterHTML,默认为false
+     */
+    parseHTML: boolean;    
 }
 /** V8选项配置 */
 declare var RSV8Opt: RSV8Opt;
