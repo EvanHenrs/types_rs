@@ -12,7 +12,7 @@
 	 		"/// <reference path=\"$1\" />",
 			"RSVM.import(\"$2\");"
 	 	],
-	 	"description": "reference path"
+	 	"description": "reference path "
 	 },
 	"Print to console": {
 		"prefix": "console.log",
