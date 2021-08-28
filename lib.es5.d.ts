@@ -420,7 +420,7 @@ interface RSContextConstructor {
     */    
     new(): RSContext;
 }
-declare var RSContext: DateConstructor;
+declare var RSContext: RSContextConstructor;
 
 
 
