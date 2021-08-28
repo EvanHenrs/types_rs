@@ -140,11 +140,6 @@
 		"body":["RSUtil.sleep"],
 		"description": "延迟"
 	 },
-	 "RSUtil['stack']":{
-		"prefix": "RSUtil.stack",
-		"body":["RSUtil.stack"],
-		"description": "打印堆栈"
-	 },
 	 "RSUtil['move']":{
 		"prefix": "RSUtil.move",
 		"body":["RSUtil.move"],
@@ -154,16 +149,6 @@
 		"prefix": "RSUtil.randstr",
 		"body":["RSUtil.randstr"],
 		"description": "取随机串"
-	 },
-	 "RSUtil['Crypto']":{
-		"prefix": "RSUtil.Crypto",
-		"body":["RSUtil.Crypto"],
-		"description": "加密库"
-	 },
-	 "RSUtil['Sleep']":{
-		"prefix": "RSUtil.Sleep",
-		"body":["RSUtil.Sleep"],
-		"description": "延迟"
 	 },
 	 "RSAppElementList":{
 		"prefix": "RSAppElementList",
@@ -245,7 +230,6 @@
 		"body":["RSDLL.ptr2str($1)"],
 		"description": "DLL调用"
 	 },	 
-	
 	 "RSVM['import']":{
 		"prefix": "RSVM.import",
 		"body":["RSVM.import($1)"],
@@ -270,12 +254,6 @@
 			"  httpProxy:'',",
 			"  //设置根路径",
 			"  rootPath: '',",
-			"  //当调用.getElementById(id)时如果不存在元素是否自动创建,该参数也可以是一个函数,你可以依此函数过滤(id)=>{if(id =='ed')return false;return true}",
-			"  createElementById: false,",
-			"  //当调用.getElementsByTagName(tag)时如果不存在元素是否自动创建,该参数也可以是一个函数,你可以依此函数过滤(tag)=>{if(tag =='ed')return false;return true}",
-			"  createElementByTagName: false,",
-			"  //当调用.getElementsByClassName(clsName)时如果不存在元素是否自动创建,该参数也可以是一个函数,你可以依此函数过滤(clsName)=>{if(clsName =='ed')return false;return true}",
-			"  createElementByClassName: false,",
 			"  //设置XMLHttpRequest是否具有访问网络的能力,该参数也可以是一个函数,你可以依此函数过滤(url)=>{if(url.indexOf('baidu.com'))return false;return true}",
 			"  autoHttp: false,",
 			"  //当setTimeout(handler,time)中的time<timeout时.将自动执行handler(异步),timeout也可以是一个函数,你可以依此函数过滤(handler,time)=>{if(time == 8)return -1;return 100}(指定不执行8毫秒的类型)",
@@ -291,8 +269,7 @@
 			"});"	
 		],
 		"description": "设置V8全局选项"
-	 },	
-	 
+	 },	 
 	 "httpProxy":{
 		"prefix": "opt::httpProxy",
 		"body":["httpProxy:'$1',"],
@@ -408,21 +385,6 @@
 		"body":["RSV8Opt.scriptPath"],
 		"description": "当前脚本目录"
 	 },	 
-	 "RSV8Opt.createElementById":{
-		"prefix": "RSV8Opt.createElementById",
-		"body":["RSV8Opt.createElementById = true;"],
-		"description": "自动创建元素"
-	 },
-	 "RSV8Opt.createElementByTagName":{
-		"prefix": "RSV8Opt.createElementByTagName",
-		"body":["RSV8Opt.createElementByTagName = true;"],
-		"description": "自动创建元素"
-	 },
-	 "RSV8Opt.createElementByClassName":{
-		"prefix": "RSV8Opt.createElementByClassName",
-		"body":["RSV8Opt.createElementByClassName = true;"],
-		"description": "自动创建元素"
-	 },
 	 "RSV8Opt.autoHttp":{
 		"prefix": "RSV8Opt.autoHttp",
 		"body":["RSV8Opt.autoHttp = true;"],
@@ -438,22 +400,6 @@
 		"body":["RSV8Opt.userAgent = '$1'"],
 		"description": "设置UA"
 	 },
-	 "RSV8Opt.funcToString":{
-		"prefix": "RSV8Opt.funcToString",
-		"body":["RSV8Opt.funcToString = (fnstr)=>{return fnstr};"],
-		"description": ""
-	 },
-
-	 "RSV8Opt.funcCaller":{
-		"prefix": "RSV8Opt.funcCaller",
-		"body":["RSV8Opt.funcCaller = (caller)=>{return caller};"],
-		"description": "拦截argument.callee.caller"
-	 },
-
-
-
-
- 
 	 "RSV8Opt.autoScript":{
 		"prefix": "RSV8Opt.autoScript",
 		"body":["RSV8Opt.autoScript = true;"],
