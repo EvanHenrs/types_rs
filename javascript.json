@@ -1,0 +1,590 @@
+
+{
+	// Place your snippets for javascript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	
+	"reference path": {
+		"prefix": "//ref",
+	 	"body": [
+	 		"/// <reference path=\"$1\" />",
+			"RSVM.import(\"$2\");"
+	 	],
+	 	"description": "reference path"
+	 },
+	"Print to console": {
+		"prefix": "console.log",
+	 	"body": [
+	 		"console.log($1);"
+	 	],
+	 	"description": "console.log"
+	 },
+	 "RSHttpProxy": {
+		"prefix": "__http_proxy__",
+		"body": [
+			"__http_proxy__ = '$1';"
+		],
+		"description": "__http_proxy__"
+	 },
+	 "New Proxy":{
+		"prefix": "new Proxy",
+		"body":[
+			"new Proxy($1, {",
+			"  get: (target, key) => {",
+			"    let value = Reflect.get(target, key);",
+			"    console.log('get', key, value);",
+			"    if (value instanceof Function) {",
+			"         value = value.bind(target);",
+			"     }",
+			"    return value;",
+			"  },",
+			"  set: (target, key, value) => {",
+			"    console.log('set', key, value);",
+			"    return Reflect.set(target, key, value);",
+			"  },",
+			"  apply: (target,ctx,args)=>{",
+			"    let value = Reflect.apply(target,ctx,args);",
+			"    console.log('apply', args, value);",
+			"    return value;",
+			"  },",		
+			"  construct: (target,args,newTarget)=>{",
+			"    let value = Reflect.construct(target,args,newTarget);",
+			"    console.log('construct', args, value);",
+			"    return value;",
+			"  },",	
+			"  has: (target, key)=>{",
+			"    let value = Reflect.has(target, key);",
+			"    console.log('has', key, value);",
+			"    return value;",
+			"  },",									
+			"});"
+
+		],
+		"description": "new Proxy"
+	 },
+
+	 "RSHook":{
+		"prefix": "RSHook",
+		"body":[
+			"RSHook(window, '$1',{",
+			"  get: (target, key) => {",
+			"    let value = Reflect.get(target, key);",
+			"    console.log('get', key, value);",
+			"    if (value && value instanceof Function && (target != globalThis)) {",
+			"         value = value.bind(target);",
+			"     }",
+			"    return value;",
+			"  },",
+			"  set: (target, key, value) => {",
+			"    console.log('set', key, value);",
+			"    return Reflect.set(target, key, value);",
+			"  },",
+			"  apply: (target,ctx,args)=>{",
+			"    let value = Reflect.apply(target,ctx,args);",
+			"    console.log('apply', args, value);",
+			"    return value;",
+			"  },",		
+			"  construct: (target,args,newTarget)=>{",
+			"    let value = Reflect.construct(target,args,newTarget);",
+			"    console.log('construct', args, value);",
+			"    return value;",
+			"  },",	
+			"  has: (target, key)=>{",
+			"    let value = Reflect.has(target, key);",
+			"    console.log('has', key, value);",
+			"    return value;",
+			"  },",									
+			"});"			
+		],
+		"description": "RSHook"
+	 },
+
+
+
+
+
+
+	 "ObjectDef":{
+		"prefix": "Object.defineProperty",
+		"body":[
+			"Object.defineProperty($1,'$2',{",
+			"    get:function(){",
+			"        return this._tmp;",
+			"    },",
+			"    set:function(v){",
+			"        this._tmp = v;",
+			"    }",
+			"});"
+		],
+		"description": "Object.defineProperty"
+	 },
+	 "RSUtil['writeFile']":{
+		"prefix": "RSUtil.writeFile",
+		"body":["RSUtil.writeFile"],
+		"description": "写文件"
+	 },
+	 "RSUtil['readFile']":{
+		"prefix": "RSUtil.readFile",
+		"body":["RSUtil.readFile"],
+		"description": "读文件"
+	 },
+	 "RSUtil['unbind']":{
+		"prefix": "RSUtil.unbind",
+		"body":["RSUtil.unbind"],
+		"description": "解除bind"
+	 },
+	 "RSUtil['sleep']":{
+		"prefix": "RSUtil.sleep",
+		"body":["RSUtil.sleep"],
+		"description": "延迟"
+	 },
+	 "RSUtil['stack']":{
+		"prefix": "RSUtil.stack",
+		"body":["RSUtil.stack"],
+		"description": "打印堆栈"
+	 },
+	 "RSUtil['move']":{
+		"prefix": "RSUtil.move",
+		"body":["RSUtil.move"],
+		"description": "鼠标轨迹"
+	 },
+	 "RSUtil['randstr']":{
+		"prefix": "RSUtil.randstr",
+		"body":["RSUtil.randstr"],
+		"description": "取随机串"
+	 },
+	 "RSUtil['Crypto']":{
+		"prefix": "RSUtil.Crypto",
+		"body":["RSUtil.Crypto"],
+		"description": "加密库"
+	 },
+	 "RSUtil['Sleep']":{
+		"prefix": "RSUtil.Sleep",
+		"body":["RSUtil.Sleep"],
+		"description": "延迟"
+	 },
+	 "RSAppElementList":{
+		"prefix": "RSAppElementList",
+		"body":["RSAppElementList"],
+		"description": "元素列表"
+	 },
+	 "RSJsonpList":{
+		"prefix": "RSJsonpList",
+		"body":["RSJsonpList"],
+		"description": "Jsonp列表"
+	 },
+	 "RSJsonpList.clear":{
+		"prefix": "RSJsonpList.clear",
+		"body":["RSJsonpList.clear();"],
+		"description": "清空元素"
+	 },
+	 "RSJsonpList.find":{
+		"prefix": "RSJsonpList.find",
+		"body":["RSJsonpList.find('$1');"],
+		"description": "根据src关键词搜索元素"
+	 },
+	 "RSTimeoutList.clear":{
+		"prefix": "RSTimeoutList.clear",
+		"body":["RSTimeoutList.clear();"],
+		"description": "清空元素"
+	 },
+	 "RSXMLData":{
+		"prefix": "RSXMLData",
+		"body":["RSXMLData"],
+		"description": "xmlRequest"
+	 },	 
+	 "RSLocalDeque.get":{
+		"prefix": "RSLocalDeque.get",
+		"body":["RSLocalDeque.get($1)"],
+		"description": "全局队列管理"
+	 },
+	 "RSLocalStorage['getItem']":{
+		"prefix": "RSLocalStorage.getItem",
+		"body":["RSLocalStorage.getItem($1)"],
+		"description": "全局哈希表"
+	 },
+	 "RSLocalStorage['setItem']":{
+		"prefix": "RSLocalStorage.setItem",
+		"body":["RSLocalStorage.setItem($1,$2)"],
+		"description": "全局哈希表"
+	 },
+	 "RSLocalStorage['removeItem']":{
+		"prefix": "RSLocalStorage.removeItem",
+		"body":["RSLocalStorage.removeItem($1)"],
+		"description": "全局哈希表"
+	 },
+	 "RSLocalStorage['clear']":{
+		"prefix": "RSLocalStorage.clear",
+		"body":["RSLocalStorage.clear()"],
+		"description": "全局哈希表"
+	 },
+	 "RSLocalStorage['key']":{
+		"prefix": "RSLocalStorage.key",
+		"body":["RSLocalStorage.key($1)"],
+		"description": "全局哈希表"
+	 },
+	 "RSSleep":{
+		"prefix": "RSSleep",
+		"body":["RSSleep($1)"],
+		"description": "延迟"
+	 },
+	 "RSDLL['load']":{
+		"prefix": "RSDLL.load",
+		"body":["RSDLL.load('$1')"],
+		"description": "DLL调用"
+	 },
+	 "RSDLL['call']":{
+		"prefix": "RSDLL.call",
+		"body":["RSDLL.call('$1')"],
+		"description": "DLL调用"
+	 },
+	 "RSDLL['ptr2str']":{
+		"prefix": "RSDLL.ptr2str",
+		"body":["RSDLL.ptr2str($1)"],
+		"description": "DLL调用"
+	 },	 
+	
+	 "RSVM['import']":{
+		"prefix": "RSVM.import",
+		"body":["RSVM.import($1)"],
+		"description": "编译JS文件"
+	 },	 
+	 "RSVM['compile']":{
+		"prefix": "RSVM.compile",
+		"body":["RSVM.compile($1)"],
+		"description": "编译JS代码"
+	 },
+	 "__root_path__":{
+		"prefix": "__root_path__",
+		"body":["__root_path__ = '$1';"],
+		"description": "设置根目录"
+	 },	 	
+	 "RSSetGlobalOption":{
+		"prefix": "RSSetGlobalOption",
+		"body":[
+			"RSSetGlobalOption({",
+			"  /*---不必要的的字段可以删除---*/",
+			"  //设置代理,可以是一个字符串,也可以是一个对象,对象格式{ip:'',header:''(协议头,一行一个),user_pwd:''(账号:密码),type:(0=http代理,5=Socks5代理)}",
+			"  httpProxy:'',",
+			"  //设置根路径",
+			"  rootPath: '',",
+			"  //当调用.getElementById(id)时如果不存在元素是否自动创建,该参数也可以是一个函数,你可以依此函数过滤(id)=>{if(id =='ed')return false;return true}",
+			"  createElementById: false,",
+			"  //当调用.getElementsByTagName(tag)时如果不存在元素是否自动创建,该参数也可以是一个函数,你可以依此函数过滤(tag)=>{if(tag =='ed')return false;return true}",
+			"  createElementByTagName: false,",
+			"  //当调用.getElementsByClassName(clsName)时如果不存在元素是否自动创建,该参数也可以是一个函数,你可以依此函数过滤(clsName)=>{if(clsName =='ed')return false;return true}",
+			"  createElementByClassName: false,",
+			"  //设置XMLHttpRequest是否具有访问网络的能力,该参数也可以是一个函数,你可以依此函数过滤(url)=>{if(url.indexOf('baidu.com'))return false;return true}",
+			"  autoHttp: false,",
+			"  //当setTimeout(handler,time)中的time<timeout时.将自动执行handler(异步),timeout也可以是一个函数,你可以依此函数过滤(handler,time)=>{if(time == 8)return -1;return 100}(指定不执行8毫秒的类型)",
+			"  timeout: 1,",
+			"  //设置Http请求网络所使用的user_agent,为null或undefined,使用内部提供的ua",
+			"  userAgent:undefined,",
+			"  //是否自动执行JSONP请求,该参数也可以是一个函数,你可以依此函数过滤(script)=>{if(script.src.indexOf('332.js'))return false;return true}",
+			"  autoScript:false,",
+			"  //hook所有函数的toString,该字段类型是一个函数,参数fnstr为原toString()内容,如果不hook,请不要设置该字段",
+			"  /*funcToString:(fnstr)=>{return fnstr},*/",
+			"  //hook argument.callee.caller,该字段类型是一个函数,参数caller为原argument.callee.caller,如果不hook,请不要设置该字段",
+			"  /*funcCaller:(caller)=>{if(caller.toString().indexOf('abc'))return null;return caller},*/",
+			"});"	
+		],
+		"description": "设置V8全局选项"
+	 },	
+	 
+	 "httpProxy":{
+		"prefix": "opt::httpProxy",
+		"body":["httpProxy:'$1',"],
+		"description": "设置代理"
+	 },
+	 "rootPath":{
+		"prefix": "opt::rootPath",
+		"body":["rootPath:'$1',"],
+		"description": "设置根路径"
+	 },
+	 "createElementById":{
+		"prefix": "opt::createElementById",
+		"body":["createElementById:true,"],
+		"description": "ById"
+	 },
+	 "createElementByTagName":{
+		"prefix": "opt::createElementByTagName",
+		"body":["createElementByTagName:true,"],
+		"description": "ByTagName"
+	 },
+	 "createElementByClassName":{
+		"prefix": "opt::createElementByClassName",
+		"body":["createElementByClassName:true,"],
+		"description": "ByClassName"
+	 },
+	 "createElementByName":{
+		"prefix": "opt::createElementByName",
+		"body":["createElementByName:true,"],
+		"description": "ByName"
+	 },
+	 "autoHttp":{
+		"prefix": "opt::autoHttp",
+		"body":["autoHttp:true,"],
+		"description": ""
+	 },
+	 "timeout":{
+		"prefix": "opt::timeout",
+		"body":["timeout:1,"],
+		"description": ""
+	 },
+	 "userAgent":{
+		"prefix": "opt::userAgent",
+		"body":["userAgent"],
+		"description": "设置UA"
+	 },
+	 "autoScript":{
+		"prefix": "opt::autoScript",
+		"body":["autoScript:true,"],
+		"description": "设置UA"
+	 },
+	 
+	 "funcToString":{
+		"prefix": "opt::funcToString",
+		"body":["funcToString:(fnstr)=>{return fnstr},"],
+		"description": ""
+	 },
+
+	 "funcCaller":{
+		"prefix": "opt::funcCaller",
+		"body":["funcCaller:(caller)=>{return caller},"],
+		"description": "拦截argument.callee.caller"
+	 },
+	 "platform":{
+		"prefix": "opt::platform",
+		"body":["platform:1,"],
+		"description": "平台切换"
+	 },
+	 
+	 "exception":{
+		"prefix": "opt::exception",
+		"body":[
+			"exception: (e)=>{" ,
+			"   $1",
+			"},"
+		],
+		"description": "异常",
+		
+	 },	 
+
+	 "parseHTML":{
+		"prefix": "opt::parseHTML",
+		"body":[
+			"parseHTML: true,"
+		],
+		"description": "解析HTML",
+		
+	 },	 
+
+	 
+	 "RSScriptDone":{
+		"prefix": "RSScriptDone",
+		"body":[
+			"RSScriptDone(()=>{" ,
+			"$1",
+			"});"
+		],
+		"description": "RSScriptDone"
+	 },	 
+	 
+	 
+	 "RSV8Opt.httpProxy":{
+		"prefix": "RSV8Opt.httpProxy",
+		"body":["RSV8Opt.httpProxy = '$1';"],
+		"description": "设置代理"
+	 },
+	 "RSV8Opt.rootPath":{
+		"prefix": "RSV8Opt.rootPath",
+		"body":["RSV8Opt.rootPath = '$1';"],
+		"description": "设置根路径"
+	 },
+	 "RSV8Opt.scriptPath":{
+		"prefix": "RSV8Opt.scriptPath",
+		"body":["RSV8Opt.scriptPath"],
+		"description": "当前脚本目录"
+	 },	 
+	 "RSV8Opt.createElementById":{
+		"prefix": "RSV8Opt.createElementById",
+		"body":["RSV8Opt.createElementById = true;"],
+		"description": "自动创建元素"
+	 },
+	 "RSV8Opt.createElementByTagName":{
+		"prefix": "RSV8Opt.createElementByTagName",
+		"body":["RSV8Opt.createElementByTagName = true;"],
+		"description": "自动创建元素"
+	 },
+	 "RSV8Opt.createElementByClassName":{
+		"prefix": "RSV8Opt.createElementByClassName",
+		"body":["RSV8Opt.createElementByClassName = true;"],
+		"description": "自动创建元素"
+	 },
+	 "RSV8Opt.autoHttp":{
+		"prefix": "RSV8Opt.autoHttp",
+		"body":["RSV8Opt.autoHttp = true;"],
+		"description": ""
+	 },
+	 "RSV8Opt.timeout":{
+		"prefix": "RSV8Opt.timeout",
+		"body":["RSV8Opt.timeout = $1;"],
+		"description": ""
+	 },
+	 "RSV8Opt.userAgent":{
+		"prefix": "RSV8Opt.userAgent",
+		"body":["RSV8Opt.userAgent = '$1'"],
+		"description": "设置UA"
+	 },
+	 "RSV8Opt.funcToString":{
+		"prefix": "RSV8Opt.funcToString",
+		"body":["RSV8Opt.funcToString = (fnstr)=>{return fnstr};"],
+		"description": ""
+	 },
+
+	 "RSV8Opt.funcCaller":{
+		"prefix": "RSV8Opt.funcCaller",
+		"body":["RSV8Opt.funcCaller = (caller)=>{return caller};"],
+		"description": "拦截argument.callee.caller"
+	 },
+
+
+
+
+ 
+	 "RSV8Opt.autoScript":{
+		"prefix": "RSV8Opt.autoScript",
+		"body":["RSV8Opt.autoScript = true;"],
+		"description": "是否自动JSONP请求"
+	 },	 
+	 "RSV8Opt.exception":{
+		"prefix": "RSV8Opt.exception",
+		"body":[
+			"RSV8Opt.exception = (e)=>{" ,
+			"   $1",
+			"};"
+		],
+		"description": "异常"
+	 },
+
+	 "RSV8Opt.platform":{
+		"prefix": "RSV8Opt.platform",
+		"body":[
+			"RSV8Opt.platform = 1;"
+		],
+		"description": "平台切换"
+	 },
+	 "RSV8Opt.parseHTML":{
+		"prefix": "RSV8Opt.parseHTML",
+		"body":[
+			"RSV8Opt.parseHTML = true;"
+		],
+		"description": "自动解析HTML"
+	 },
+
+	 "RSV8Opt.globalHook":{
+		"prefix": "RSV8Opt.globalHook",
+		"body":[
+			"RSV8Opt.globalHook = function(key){",
+			"     console.log(key);",
+			"}"
+		],
+		"description": "Hook全局"
+	 },	 
+
+
+	 "rs::expired":{
+		"prefix": "rs::expired",
+		"body":[
+			"/*rs::exprired$1rs::exprired*/"
+		],
+		"description": "设置多久代码多久过期,单位秒"
+	 },
+
+	 "warning":{
+		"prefix": "$___请勿将此代码用于非法用途___$",
+		"body":[
+			"$$___请勿将此代码用于非法用途___$;\r\n$1"
+		],
+		"description": ""		 
+	 },
+	 "RSHttp['request']":{
+		"prefix": "RSHttp.request",
+		"body":["RSHttp.request('$1',$2)"],
+		"description": "Http请求"
+	 },	 	
+	 "RSHttp['get']":{
+		"prefix": "RSHttp.get",
+		"body":["RSHttp.get($1)"],
+		"description": "(url,param,header,retHeader)"
+	 },	
+	 "RSHttp['post']":{
+		"prefix": "RSHttp.post",
+		"body":["RSHttp.post($1,$2)"],
+		"description": "(url,param,header,retHeader)"
+	 },	 
+	 "RSHttp['status']":{
+		"prefix": "RSHttp.status",
+		"body":["RSHttp.status"],
+		"description": "Http状态码"
+	 },	 
+	 "RSHttp['errCode']":{
+		"prefix": "RSHttp.errCode",
+		"body":["RSHttp.errCode"],
+		"description": "Curl错误码"
+	 },	
+	 "RSHttp['deleteReqHeader']":{
+		"prefix": "RSHttp.deleteReqHeader",
+		"body":["RSHttp.deleteReqHeader($1);"],
+		"description": "删除协议头,空删除所有"
+	 },	 
+
+	 "RSHttp['getRspHeader']":{
+		"prefix": "RSHttp.getRspHeader",
+		"body":["RSHttp.getRspHeader($1);"],
+		"description": "取返回协议头,空取所有"
+	 },	 
+
+	 "RSHttp['autoHeader']":{
+		"prefix": "RSHttp.autoHeader",
+		"body":["RSHttp.autoHeader(false);"],
+		"description": "自动补全协议头"
+	 },	 
+	 "RSHttp['setReqHeader']":{
+		"prefix": "RSHttp.setReqHeader",
+		"body":["RSHttp.setReqHeader($1);"],
+		"description": "设置协议头"
+	 },	
+	 "RSHttp['setReqHeaderOrder']":{
+		"prefix": "RSHttp.setReqHeaderOrder",
+		"body":["RSHttp.setReqHeaderOrder($1);"],
+		"description": "设置协议头顺序列表,参数类型 数组,数组成员为协议头key"
+	 },	
+	 "RSHttp['getCookie']":{
+		"prefix": "RSHttp.getCookie",
+		"body":["RSHttp.getCookie($1);"],
+		"description": "获取Cookie"
+	 },	
+	 "RSHttp['getRspTime']":{
+		"prefix": "RSHttp.getRspTime",
+		"body":["RSHttp.getRspTime($1);"],
+		"description": "获取响应时间"
+	 },
+	 "RSHttp['getRspText']":{
+		"prefix": "RSHttp.getRspText",
+		"body":["RSHttp.getRspText();"],
+		"description": "获取响应文本"
+	 },
+	 "RSHttp['setTimeout']":{
+		"prefix": "RSHttp.setTimeout",
+		"body":["RSHttp.setTimeout($1,$2);"],
+		"description": "设置超时,(连接超时,发送超时)毫秒"
+	 },
+	 "RSHttp['setOption']":{
+		"prefix": "RSHttp.setOption",
+		"body":["RSHttp.setOption($1,$2);"],
+		"description": "设置选项"
+	 },
+}
