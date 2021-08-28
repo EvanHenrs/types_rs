@@ -234,7 +234,7 @@ interface String {
      */
      fromPtr(ptr:number): string;
 }
-declare var String: String;
+declare var String: StringConstructor;
 
 /** 通过addEventListener添加的事件参数会被保存到此对象 */
 declare var RSEventList: object;
@@ -343,6 +343,21 @@ interface RSLocalDeque {
 /** 全局队列管理器,线程安全*/
 declare var RSLocalDeque: RSLocalDeque;
 
+interface DLLInstance {
+
+}
+
+interface RSDLL {
+    /**
+    * 加载一个DLL实例,
+    * @param path DLL路径
+    * @param method_list 要加载的方法名称列表,为空自动读取DLL导出的函数
+    * @param init_fn 初始化函数,这个函数全局只会调用一次,会传递一个DLL实例参数
+    */
+   load(path:string, method_list:Array<string>,init_fn:Function): DLLInstance
+}
+/** DLL管理类,线程安全*/
+declare var RSDLL: RSDLL;
 
 
 
