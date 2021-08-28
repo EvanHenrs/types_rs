@@ -134,3 +134,61 @@ interface RSV8Opt {
 /** V8选项配置 */
 declare var RSV8Opt: RSV8Opt;
 
+
+
+interface RSUtil {
+     /**
+     * 返回被bind的函数的原始值
+     * @param bind_fuc 被bind的函数
+     */
+    unbind(bind_fuc: Function): Function;
+     /**
+     * 写数据到磁盘文件
+     * @param path 文件路径
+     * @param data 要写入的data
+     */
+    writeFile(path: string, data:string | ArrayBuffer): void;
+    /**
+     * 从磁盘文件读入数据
+     * @param path 文件路径
+     */
+    readFile(isAuto: boolean): ArrayBuffer;
+    /**
+    * 基于opencv的通用缺口识别模块,此函数的运行需要借助RSOpencv.dll,返回缺口位置信息{x,y}
+    * @param img 大图
+    * @param min_img 小图
+    * @param opt 可选,为true提高精度,但速度变慢
+    */
+    findGap(img: ArrayBuffer, min_img: ArrayBuffer, opt?:boolean): object;
+    /**
+    * 生成一段鼠标轨迹,[[8,1,16],...]
+    * @param x_end 终点位置
+    * @param wieght 重力,y方向上的偏移范围大小,一般为50
+    * @param speed  加速度,一般为10-13
+    */
+    move(x_end:number, wieght:number, speed:number): Array<Array<number>>;   
+    /**
+    * 生成uuid字符串
+    */
+    uuid(): string;
+     /**
+     * MD5
+     * @param data 要计算MD5的数据
+     */
+    md5(data: string): string; 
+    /**
+     * 返回一段随机字符串
+     * @param length 要生成的随机字符串的长度
+     */
+    randstr(length: number): string;    
+}
+/** 工具类 */
+declare var RSUtil: RSUtil;
+
+interface ArrayBuffer {
+    /**
+     * 返回UTF8字符串,原数据是ansi编码
+     */
+    toStrFromAnsi(): string;      
+}
+
