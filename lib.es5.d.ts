@@ -402,8 +402,9 @@ interface RSContext {
     /**
     * 执行一个JS文件,当path指定的文件名在全局存储器里存在相应的key时,会直接加载对应的值
     * @param path JS文件路径,可以为网络文件,也可以为本地文件(可以为相对路径)
+    * @param need_cache 是否需要缓存代码,如果为true,代码被缓存到全局存储器,key为path
     */
-   import(path:string): any
+   import(path:string, need_cache:boolean): any
 
     /**
     * 执行JS代码
