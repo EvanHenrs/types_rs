@@ -189,6 +189,158 @@ interface ArrayBuffer {
     /**
      * 返回UTF8字符串,原数据是ansi编码
      */
-    toStrFromAnsi(): string;      
+    toStrFromAnsi(): string;       
+    /**
+     * 返回UTF8字符串,原数据是Utf8编码
+     */
+    toStrFromUtf8(): string;      
+    /**
+     * 返回16进制字符串
+     */
+    toHex(): string;     
+    /**
+     * 返回int类型
+     */
+    toInt32(): number;       
+    /**
+      * 返回uint类型
+      */
+    toUint32(): number;      
+     /**
+      * 返回number类型,双精度
+      */
+    toNumber(): number;    
+    /**
+     * 返回base64字符串
+     */
+    toBase64(): string;  
+    /**
+     * 如果数据是一张图片,此方法会创建一个窗口,并且显示该图片.
+     * 你还可以添加标题, ab.title="123",ob.show();
+     * @param type 显示类型,0=>点击图片后销毁窗口,返回点击的位置数组[x,y].1=>可多次点击图片,通过x按钮销毁窗口,返回多个位置[[x,y],[x,y]].2=>在编辑框里输入数据,销毁窗口后返回输入的数据,[数据],默认为0
+     * @param img 要额外显示的图片,此参数可以叠加,不限个数
+     */
+    show(type ?:number, img?:ArrayBuffer,): Array<any>;      
 }
+
+interface String {
+    /**
+     * 返回字符串的ArrayBuffer数据
+     */
+     buffer: ArrayBuffer;
+     /**
+     * 拷贝指定指针的数据然后返回该字符串
+     * @param ptr 以\0结尾的字符串指针
+     */
+     fromPtr(ptr:number): string;
+}
+declare var String: String;
+
+/** 通过addEventListener添加的事件参数会被保存到此对象 */
+declare var RSEventList: object;
+
+/** 通过XMLHttpRequest发送的参数会被保存到此对象 */
+declare var RSXMLData: object;
+
+/** 通过setTimeout设置的参数会被保存到此数组 */
+declare var RSTimeoutList: Array<Object>;
+
+/** 通过setInterval设置的参数会被保存到此数组 */
+declare var RSIntervalList: Array<Object>;
+
+/** jsonp保存列表*/
+declare var RSJsonpList: Array<object>;
+
+/** 所有的异常信息会被保存到此数组*/
+declare var RSGlobalExceptions: Array<Error>;
+
+
+interface RSLocalStorage {
+     /**
+     * 读取项目值
+     * @param key 要读取的key
+     */
+    getItem(key:string): string;
+     /**
+     * 设置项目数据
+     * @param key 要设置的key
+     * @param value 要设置的值
+     */
+    setItem(key:string,value:string): void;
+     /**
+     * 移除项目值
+     * @param key 要移除的key
+     */
+    removeItem(key:string): string;
+     /**
+     * 清空项目
+     */
+    clear(): void;
+    /**
+     * 读取项目值
+     * @param key 要读取的key
+     */
+    getItem(key:string): string;   
+    /**
+     * 返回指定下标的key值
+     * @param index 下标
+     */
+    key(index:number): string;   
+
+    /** 长度 */
+    readonly length:number
+}
+/** 全局键值存储器, 所有V8实例对象共享,线程安全*/
+declare var RSLocalStorage: RSLocalStorage;
+
+interface RSDeque {
+     /**
+     * 弹出队尾元素
+     */
+    pop(): string
+    /**
+     * 压入元素到队尾,返回队列长度
+     * @param data 要压入的数据
+     */
+    push(data:string): number
+     /**
+     * 弹出队首元素
+     */
+    shift(): string
+    /**
+     * 压入元素到队首,返回队列长度
+     * @param data 要压入的数据
+     */
+    unshift(data:string): number
+     /**
+      * 清空队列
+      */
+    clear(): void
+     /**
+      * 保存所有元素到磁盘文件
+      * @param path 文件路径
+      */
+    save(path:string): void      
+     /**
+      * 加载磁盘文件到队列,返回队列长度
+      * @param path 文件路径
+      */
+    load(path:string): number    
+
+    /** 长度 */
+    readonly length:number
+    
+}
+
+interface RSLocalDeque {
+     /**
+     * 根据下标生成一个全局队列,相同的下标生成的队列是同一个,即使在不同的V8实例之间
+     * @param index 下标
+     */
+    get(index:number): RSDeque
+
+}
+/** 全局队列管理器,线程安全*/
+declare var RSLocalDeque: RSLocalDeque;
+
 
