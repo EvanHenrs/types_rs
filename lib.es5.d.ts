@@ -98,6 +98,38 @@ interface RSHttp {
 declare var RSHttp: RSHttp;
 
 
+
+interface XHRData {
+  /**
+   * 发送数据的xhr实例类
+   */
+   xml: XMLHttpRequest;
+  /**
+   * 请求的链接地址
+   */
+   url: string;
+  /**
+   * 请求的数据体
+   */
+   data: string;
+  /**
+   * 请求的方法
+   */
+   method: string;
+  /**
+   * 请求的HTTP头
+   */
+   headers: string;      
+}
+/** 通过XMLHttpRequest发送的参数会被保存到此对象 */
+declare var RSXMLData: XHRData;
+
+
+
+
+
+
+
 interface RSV8Opt {
     /** 设置网络代理,所有的网络请求都会走此代理
      * 当为字符串的时候,形式为 "127.0.0.1:1111"
@@ -246,32 +278,9 @@ declare var RSEventList: object;
 
 
 
-interface RSXMLData {
-  /**
-   * 发送数据的xhr实例类
-   */
-   xml: XMLHttpRequest;
-  /**
-   * 请求的链接地址
-   */
-   url: string;
-  /**
-   * 请求的数据体
-   */
-   data: string;
-  /**
-   * 请求的方法
-   */
-   method: string;
-  /**
-   * 请求的HTTP头
-   */
-   headers: string;      
-}
 
 
-/** 通过XMLHttpRequest发送的参数会被保存到此对象 */
-declare var RSXMLData: RSXMLData;
+
 
 /** 通过setTimeout设置的参数会被保存到此数组 */
 declare var RSTimeoutList: Array<Object>;
