@@ -99,7 +99,7 @@ declare var RSHttp: RSHttp;
 
 
 
-interface XHRData {
+interface RSXMLData {
   /**
    * 发送数据的xhr实例类
    */
@@ -122,7 +122,7 @@ interface XHRData {
    headers: string;      
 }
 /** 通过XMLHttpRequest发送的参数会被保存到此对象 */
-declare var RSXMLData: XHRData;
+declare var RSXMLData: RSXMLData;
 
 
 
@@ -153,7 +153,7 @@ interface RSV8Opt {
     timeout: number;   
     /** 赋予XMLHttpRequest请求网络的能力
      *  如果为true,XMLHttpRequest会像浏览器一样,发送HTTP请求,
-     *  如果为false,那么XMLHttpRequest的相关数据会被保存在RSXMLData类里,
+     *  如果为false,那么XMLHttpRequest的相关数据会被保存在RSXMLData 类里,
      *  默认为false
      */
     autoHttp: boolean;  
@@ -421,6 +421,9 @@ declare function sha256(data: string): string;
 declare function RSScriptDone(fn: Function): any;
 
 
+/** 新建一个事件参数*/
+declare function RSEvent(type: string): any;
+
 interface RSVM {
     /**
     * 执行一个JS文件,当path指定的文件名在全局存储器里存在相应的key时,会直接加载对应的值
@@ -454,6 +457,13 @@ interface RSContext {
     * @param jscode js代码
     */
     eval(jscode:string):any;
+
+
+    /**
+    * 返回环境所属的全局变量
+    */
+    global():object;
+
 }
 
 
