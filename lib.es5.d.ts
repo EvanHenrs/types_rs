@@ -131,7 +131,7 @@ interface RSWebSocket {
      * 连接服务器
      * @param url 地址
      */
-    connect(url: string, ): boolean;
+    connect(url: string ): boolean;
     /**
      * 发送数据
      * @param data 要发送的数据
