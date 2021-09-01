@@ -125,8 +125,61 @@ interface RSXMLData {
 declare var RSXMLData: RSXMLData;
 
 
+/** websocket类 */
+interface RSWebSocket {
+    /**
+     * 连接服务器
+     * @param url 地址
+     */
+    connect(url: string, ): boolean;
+    /**
+     * 发送数据
+     * @param data 要发送的数据
+     */
+    send(data: string | ArrayBuffer | ArrayBufferView ): boolean;
+    /**
+     * 接收数据,同步方法
+     * @param wait_time 等待时间,单位毫秒,-1=永久等待
+     */
+    recv(wait_time: number ): ArrayBuffer;
+    /**
+     * 接收字符串数据,同步方法
+     * @param wait_time 等待时间,单位毫秒,-1=永久等待
+     */
+    recvText(wait_time: number ): string;
+    /**
+     * 设置代理服务器
+     * @param ip_config 设置参考RSV8Opt.httpProxy
+     */
+    setProxy(ip_config: string | object ): void;    
+    /**
+     * 是否已连接
+     */
+    isConnect(): boolean; 
+    /**
+     * 设置协议头
+     * @param key 请求头key
+     * @param value 请求头value
+     */
+    setReqHeader(key: string, value: string ): void;     
+    /**
+     * 关闭连接
+     */
+    close(): void;    
+    
+    /** 消息回调函数,如果设置了此函数,则为异步形式,同步函数 recv将不能在使用*/
+    onmessage: Function;
+    
+}
 
+interface RSWebSocketConstructor {
+  /**
+  * 创建一个websocket客户端
+  */    
+  new(): RSWebSocket;
+}
 
+declare var RSWebSocket: RSWebSocketConstructor;
 
 
 
