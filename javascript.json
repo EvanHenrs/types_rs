@@ -405,8 +405,8 @@
 	 "RSV8Opt.globalHook":{
 		"prefix": "RSV8Opt.globalHook",
 		"body":[
-			"RSV8Opt.globalHook = function(type, target, name, value){",
-			"    console.log(type, target, name, value);",
+			"RSV8Opt.globalHook = function(type, target, name, value, call_args){",
+			"    console.log([...arguments]);",
 			"}"
 		],
 		"description": "Hook全局"
