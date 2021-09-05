@@ -317,12 +317,31 @@ interface String {
     /**
      * 返回字符串的ArrayBuffer数据
      */
-     buffer: ArrayBuffer;
+    buffer: ArrayBuffer;
      /**
      * 拷贝指定指针的数据然后返回该字符串
      * @param ptr 以\0结尾的字符串指针
      */
-     fromPtr(ptr:number): string;
+    fromPtr(ptr:number): string;
+
+     /**
+     * 将16进制字符串转成ArrayBuffer
+     */
+    decodeHex(): ArrayBuffer;
+
+     /**
+     * 将Base64字符串转成ArrayBuffer
+     */
+    decodeBase64(): ArrayBuffer;    
+
+     /**
+     * 取出中间文本
+     * @param left 左边字符串
+     * @param right 右边字符串
+     * @param start_pos 查询的开始位置,默认为0
+     */
+    mid(left:string, right:string, start_pos ?: number): string;    
+    
 }
 declare var String: StringConstructor;
 
