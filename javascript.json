@@ -421,6 +421,16 @@
 		"description": "设置多久代码多久过期,单位秒"
 	 },
 
+	 "rs::encode_chunk":{
+		"prefix": "rs::encode_chunk",
+		"body":[
+			"/*rs::encode_chunk*/"
+		],
+		"description": ""
+	 },
+
+	 
+
 	 "warning":{
 		"prefix": "$___请勿将此代码用于非法用途___$",
 		"body":[
