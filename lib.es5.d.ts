@@ -349,6 +349,8 @@ declare var String: StringConstructor;
 declare var RSEventList: object;
 
 
+/** 当前环境是否是VSCode */
+declare var env_vs: boolean;
 
 
 
