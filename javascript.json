@@ -438,6 +438,16 @@
 		],
 		"description": ""		 
 	 },
+
+	 "warning1":{
+		"prefix": "$___Commercial_Use_Is_Forbidden___$",
+		"body":[
+			"$$___Commercial_Use_Is_Forbidden___$;\r\n$1"
+		],
+		"description": ""		 
+	 },
+
+
 	 "RSHttp['request']":{
 		"prefix": "RSHttp.request",
 		"body":["RSHttp.request('$1',$2)"],
