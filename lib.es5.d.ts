@@ -551,4 +551,27 @@ interface RSContextConstructor {
 declare var RSContext: RSContextConstructor;
 
 
+interface Date {
+    /**
+    * 增加本地时间
+    * @param time 要增加的时间,单位毫秒
+    */
+     adTime(time:number);  
+    /**
+    * 调整本地时间
+    * @param time 要调整的时间,单位毫秒
+    */
+     chTime(time:number); 
+    /**
+    * 取格式化时间, 以指定参数格式化当前时间并返回  %Y年%m月%d日%H时%M分%S秒
+    * @param format
+    */
+     format(format:string): string; 
+
+
+}
+
+declare var Date: Date;
+
+
 
