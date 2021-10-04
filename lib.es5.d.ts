@@ -568,6 +568,15 @@ interface RSContext {
 }
 
 
+interface HTMLIFrameElement {
+  /**
+  * 返回该框架下的环境上下文,利用此上下文执行代码
+  */
+ context: RSContext; 
+}
+
+
+
 
 interface RSContextConstructor {
     /**
