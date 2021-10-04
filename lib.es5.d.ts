@@ -362,8 +362,35 @@ declare var RSTimeoutList: Array<Object>;
 /** 通过setInterval设置的参数会被保存到此数组 */
 declare var RSIntervalList: Array<Object>;
 
+
+interface RSJsonpList {
+    /**
+     * 返回字符串的ArrayBuffer数据
+     */
+     length: number;
+     /**
+     * 查找列表每一个元素的src属性是否包含关键字key,如果包含,则返回第一个匹配的元素,否则返回null
+     */
+     find(key:string): Element;  
+     /**
+     * 清空此列表
+     */
+     clear(): void;  
+     /**
+     * 查找列表每一个元素的src属性是否包含关键字key,如果包含,选中此元素.
+     * 如果该元素是script,则请求该元素src指向的链接,并执行返回的代码,
+     * 如果元素下绑定有onload..函数,则此函数会被执行.（同步方式）
+     * @param key 关键字
+     * @param ret_rsp 如果元素是script,此参数标明是否返回请求的内容
+     * @param need_cache 如果元素是script,此参数标明是否缓存脚本代码
+     */
+     load(key:string, ret_rsp:boolean,need_cache:boolean): any;     
+}
+
+
+
 /** jsonp保存列表*/
-declare var RSJsonpList: Array<object>;
+declare var RSJsonpList: RSJsonpList;
 
 /** 所有的异常信息会被保存到此数组*/
 declare var RSGlobalExceptions: Array<Error>;
