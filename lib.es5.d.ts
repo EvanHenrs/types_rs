@@ -375,7 +375,7 @@ interface RSJsonpList {
      /**
      * 清空此列表
      */
-     clear(): void;  
+     clear(): void;   
      /**
      * 查找列表每一个元素的src属性是否包含关键字key,如果包含,选中此元素.
      * 如果该元素是script,则请求该元素src指向的链接,并执行返回的代码,
